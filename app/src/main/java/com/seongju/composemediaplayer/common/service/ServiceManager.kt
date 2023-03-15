@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
 import android.util.Log
+import androidx.compose.runtime.mutableStateOf
 
 class ServiceManager(
     private val context: Context
@@ -17,6 +18,9 @@ class ServiceManager(
         private set
 
     private lateinit var playerServiceConnection: ServiceConnection
+
+    var playerServiceState = mutableStateOf(false)
+        private set
 
     init {
         initServiceConnection()
@@ -48,6 +52,7 @@ class ServiceManager(
             override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
                 val getPlayerService = service as PlayerService.LocalBinder
                 playerService = getPlayerService.getPlayerService()
+                playerServiceState.value = true
                 Log.d(tag, "Player Service 실행에 성공하였습니다.")
             }
 

@@ -65,7 +65,7 @@ class PlayerService: Service() {
                     return START_NOT_STICKY
                 }
 
-                if (playerState.value == PlayerStatus.STATE_ENDED) {
+                if (playerState.value != PlayerStatus.STATE_ENDED) {
                     Log.e(tag, "이미 영상이 재생중 입니다.")
                     return START_NOT_STICKY
                 }

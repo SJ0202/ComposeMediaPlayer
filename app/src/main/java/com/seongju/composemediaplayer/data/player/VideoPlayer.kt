@@ -2,6 +2,7 @@ package com.seongju.composemediaplayer.data.player
 
 import android.os.Handler
 import android.os.Looper
+import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.Player.*
@@ -68,6 +69,7 @@ class VideoPlayer(
             mainThreadHandler.post {
                 player.prepare()
                 player.addListener(playerListener)
+                player.setMediaItem(MediaItem.fromUri(uri))
                 player.play()
             }
 

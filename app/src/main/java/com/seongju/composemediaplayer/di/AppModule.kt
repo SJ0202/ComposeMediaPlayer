@@ -1,6 +1,7 @@
 package com.seongju.composemediaplayer.di
 
 import android.app.Application
+import android.util.Log
 import com.seongju.composemediaplayer.common.service.ServiceManager
 import dagger.Module
 import dagger.Provides
