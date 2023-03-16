@@ -8,6 +8,8 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
+import com.seongju.composemediaplayer.common.Constants.ACTION_VIDEO_PAUSE
+import com.seongju.composemediaplayer.common.Constants.ACTION_VIDEO_RESUME
 import com.seongju.composemediaplayer.common.Constants.ACTION_VIDEO_START
 import com.seongju.composemediaplayer.common.Constants.ACTION_VIDEO_STOP
 import com.seongju.composemediaplayer.common.Constants.PLAYER_URI
@@ -56,6 +58,14 @@ class PlayerService: Service() {
         videoClient.stopPlay()
     }
 
+    private fun pauseVideoPlay(){
+        videoClient.pausePlay()
+    }
+
+    private fun resumeVideoPlay(){
+        videoClient.resumePlay()
+    }
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when(intent?.action) {
             ACTION_VIDEO_START -> {
@@ -73,6 +83,12 @@ class PlayerService: Service() {
             }
             ACTION_VIDEO_STOP -> {
                 stopVideoPlay()
+            }
+            ACTION_VIDEO_PAUSE -> {
+                pauseVideoPlay()
+            }
+            ACTION_VIDEO_RESUME -> {
+                resumeVideoPlay()
             }
         }
         return super.onStartCommand(intent, flags, startId)

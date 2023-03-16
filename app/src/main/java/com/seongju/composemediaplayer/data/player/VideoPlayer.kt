@@ -89,4 +89,16 @@ class VideoPlayer(
             player.removeListener(playerListener)
         }
     }
+
+    override fun pausePlay() {
+        mainThreadHandler.post {
+            player.pause()
+        }
+    }
+
+    override fun resumePlay() {
+        mainThreadHandler.post {
+            player.play()
+        }
+    }
 }

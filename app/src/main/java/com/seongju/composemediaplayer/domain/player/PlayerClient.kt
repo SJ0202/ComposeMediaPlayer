@@ -6,5 +6,7 @@ interface PlayerClient {
 
     fun startPlay(uri: String): Flow<PlayerResult>
     fun stopPlay()
+    fun pausePlay()
+    fun resumePlay()
 
 }

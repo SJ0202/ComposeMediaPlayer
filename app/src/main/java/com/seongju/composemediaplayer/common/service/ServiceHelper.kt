@@ -20,4 +20,11 @@ object ServiceHelper {
             context.startService(this)
         }
     }
+
+    fun triggerVideoPlay(context: Context, action: String) {
+        Intent(context, PlayerService::class.java).apply {
+            this.action = action
+            context.startService(this)
+        }
+    }
 }
